@@ -8,12 +8,15 @@
     "apps/*"
   ],
   "pnpm": {
-  "onlyBuiltDependencies": [
-    "esbuild",
-    "mongodb-memory-server",
-    "sharp"
-  ]
-},
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "mongodb-memory-server",
+      "sharp"
+    ],
+    "ignoredBuiltDependencies": [
+      "@scarf/scarf"
+    ]
+  },
   "scripts": {
     "dev:api": "pnpm --filter @medcore/api dev",
     "dev:web": "pnpm --filter @medcore/web dev",
