@@ -1,0 +1,37 @@
+name: MedCore HMS CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.25.0
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Shared Types
+        run: pnpm --filter @medcore/types build
+
+      - name: Run Backend Mandatory Test Scenarios
+        run: pnpm --filter @medcore/api test
+
+      - name: Build Frontend (Next.js 15 App Router)
+        run: pnpm --filter @medcore/web build

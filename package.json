@@ -1,0 +1,21 @@
+{
+  "name": "medcore-hms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MedCore HMS — Multi-Tenant Hospital Management Platform",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "pnpm --filter @medcore/api dev",
+    "dev:web": "pnpm --filter @medcore/web dev",
+    "dev": "pnpm --parallel --filter @medcore/api --filter @medcore/web dev",
+    "build": "pnpm -r build",
+    "test": "pnpm --filter @medcore/api test",
+    "seed": "pnpm --filter @medcore/api seed"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
