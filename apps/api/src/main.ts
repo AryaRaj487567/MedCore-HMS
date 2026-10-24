@@ -103,7 +103,7 @@ async function bootstrap() {
       await seedDatabase();
     }
 
-    server.listen(PORT, () => {
+    server.listen(Number(PORT), '0.0.0.0', () => {
       console.log(`====================================================`);
       console.log(`🏥 MedCore HMS API Server is live at http://localhost:${PORT}`);
       console.log(`📖 Swagger API Docs: http://localhost:${PORT}/api/docs`);
