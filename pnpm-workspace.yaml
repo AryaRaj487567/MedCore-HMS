@@ -3,6 +3,7 @@ packages:
   - "apps/*"
 
 onlyBuiltDependencies:
+  - "@scarf/scarf"
   - esbuild
   - mongodb-memory-server
   - sharp
